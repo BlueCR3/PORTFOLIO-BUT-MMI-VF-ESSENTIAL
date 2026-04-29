@@ -369,24 +369,21 @@
             z-index: 200;
             justify-content: center;
             align-items: center;
-            padding: 10px;
-            box-sizing: border-box;
+            padding: 16px;
         }
 
         .preview-container {
             width: 100%;
             max-width: 1200px;
-            height: 95dvh;
-            max-height: 95vh;
+            height: 95vh;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            box-sizing: border-box;
+            gap: 10px;
         }
 
         @media (min-width: 640px) {
             #preview-modal { padding: 20px; }
-            .preview-container { height: 90dvh; max-height: 90vh; gap: 12px; }
+            .preview-container { height: 90vh; gap: 12px; }
         }
 
         .preview-header {
@@ -417,6 +414,7 @@
 
         .preview-iframe-wrapper {
             flex: 1;
+            min-height: 0;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(0, 163, 255, 0.2);
@@ -916,13 +914,13 @@
                 <!-- iFrame (YouTube embed ou site web) -->
                 <iframe id="preview-iframe" src="" allow="autoplay; fullscreen" onload="onIframeLoad()" onerror="showPreviewFallback()"></iframe>
                 <!-- Bloc image Canva / aperçu image -->
-                <div id="preview-img-block" style="display:none; position:absolute; inset:0; flex-direction:column; justify-content:center; align-items:center; background:#05070A; gap:0; overflow:hidden;">
-                    <!-- Image zone -->
-                    <div style="flex:1; width:100%; display:flex; align-items:center; justify-content:center; padding:12px 12px 6px; min-height:0; box-sizing:border-box;">
-                        <img id="preview-big-img" src="" alt="Aperçu" style="max-height:100%; max-width:100%; width:auto; height:auto; object-fit:contain; border-radius:10px; border:1px solid rgba(0,163,255,0.2); box-shadow: 0 0 40px rgba(0,163,255,0.08); display:block;">
+                <div id="preview-img-block" style="display:none; position:absolute; inset:0; flex-direction:column; background:#05070A; overflow:hidden;">
+                    <!-- Image zone : toujours entière, jamais de scroll -->
+                    <div style="flex:1; min-height:0; min-width:0; display:flex; align-items:center; justify-content:center; padding:10px 10px 4px; overflow:hidden;">
+                        <img id="preview-big-img" src="" alt="Aperçu" style="display:block; width:auto; height:auto; max-width:100%; max-height:100%; object-fit:contain; border-radius:10px; border:1px solid rgba(0,163,255,0.2); box-shadow:0 0 40px rgba(0,163,255,0.08);">
                     </div>
                     <!-- Footer compact -->
-                    <div style="width:100%; padding:8px 14px 12px; display:flex; align-items:center; justify-content:space-between; background:rgba(0,0,0,0.4); border-top:1px solid rgba(255,255,255,0.05); flex-shrink:0; gap:12px;">
+                    <div style="width:100%; padding:7px 14px 10px; display:flex; align-items:center; justify-content:space-between; background:rgba(0,0,0,0.5); border-top:1px solid rgba(255,255,255,0.05); flex-shrink:0; gap:12px;">
                         <p id="preview-canva-title" class="dbz-font text-xs italic font-black uppercase text-white/80 truncate" style="flex:1; margin:0;"></p>
                         <a id="preview-canva-btn" href="#" target="_blank" class="btn-ki px-5 py-2 rounded-full font-bold uppercase text-[10px] flex items-center gap-2 whitespace-nowrap" style="flex-shrink:0;">
                             <i class="fas fa-external-link-alt"></i> Ouvrir
@@ -1064,7 +1062,7 @@
                 category: "Exprimer",
                 desc: "Réalisation d’une affiche inspirée du tutoriel “Affiche X-Men” en utilisant Photoshop. Incrustation du personnage Star-Lord sur un fond extraterrestre et travail sur la typographie originale.",
                 img: "images2/Affiche gardien de la galaxie 2.png",
-                link: "https://bluecr3.github.io/PORTFOLIO-BUT-MMI-VF-ESSENTIAL/images2/Affiche gardien de la galaxie 2.png",
+                link: "https://www.canva.com/design/DAGm4LKYzfA/jkJBF8rqKDWi9t2rKSmZjQ/view?utm_content=DAGm4LKYzfA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdcaa445dde",
                 span: "md:col-span-1"
             },
             {
