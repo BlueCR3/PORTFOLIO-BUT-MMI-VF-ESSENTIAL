@@ -1352,10 +1352,19 @@
             // youtu.be/ID
             let m = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
             if (m) return 'https://www.youtube.com/embed/' + m[1] + '?autoplay=1&rel=0';
+            // youtube.com/shorts/ID
+            m = url.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/);
+            if (m) return 'https://www.youtube.com/embed/' + m[1] + '?autoplay=1&rel=0';
             // youtube.com/watch?v=ID
             m = url.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
             if (m) return 'https://www.youtube.com/embed/' + m[1] + '?autoplay=1&rel=0';
             return null;
+        }
+
+        function getCanvaEmbedUrl(url) {
+            const m = url.match(/canva\.com\/design\/([^/]+)\/([^/]+)\/(view|watch)/);
+            if (m) return 'https://www.canva.com/design/' + m[1] + '/' + m[2] + '/' + m[3] + '?embed';
+            return url;
         }
 
         function openPreviewModal() {
@@ -1393,6 +1402,7 @@
                 typeBadge.style.display = 'inline-block';
                 const embedUrl = getYoutubeEmbedUrl(project.link);
                 if (embedUrl) {
+                    iframe.setAttribute('allow', 'autoplay; fullscreen');
                     iframe.style.display = 'block';
                     iframe.src = embedUrl;
                 } else {
@@ -1401,7 +1411,9 @@
             } else if (type === 'canva') {
                 typeBadge.textContent = '✦ Canva';
                 typeBadge.style.display = 'inline-block';
-                showPreviewCanva(project);
+                iframe.setAttribute('allow', 'fullscreen');
+                iframe.style.display = 'block';
+                iframe.src = getCanvaEmbedUrl(project.link);
             } else if (type === 'gdocs') {
                 typeBadge.textContent = '📄 PDF';
                 typeBadge.style.display = 'inline-block';
